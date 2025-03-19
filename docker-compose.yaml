@@ -1,0 +1,15 @@
+services:
+  mysql:
+    image: mysql
+    container_name: reactlibrary-mysql
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: my-secret-pw
+      MYSQL_DATABASE: reactlibrarydatabase
+      MYSQL_USER: my-sql-user
+      MYSQL_PASSWORD: my-secret-pw
+      MYSQL_ROOT_HOST: '%'
+    ports:
+      - "3306:3306"
+    volumes:
+      - ./init-scripts:/docker-entrypoint-initdb.d
